@@ -18,7 +18,7 @@ routes.post(
       email: Joi.string()
         .required()
         .email(),
-      whatsapp: Joi.number()
+      whatsapp: Joi.string()
         .required()
         .min(10)
         .max(11),
@@ -37,9 +37,7 @@ routes.post(
 routes.get(
   "/incidents",
   celebrate({
-    [Segments.QUERY]: Joi.object.keys({
-      page: Joi.number()
-    })
+    [Segments.QUERY]: Joi.number()
   }),
   IncidentController.index
 );
